@@ -4,7 +4,7 @@ In this sample project we will demonstrate how to:
 1. Create a REST Api using Spring Boot
 2. Create a unit test to automatically test rest controller
 3. Securing the REST Api. A simple `Bearer jwt_token` in `Authorization` http header will be used in order to access secured routes of this api.
-4. Create sample methods in api to demonstrate: CRUD operations, entity to DTO conversion, pagination, ETag for REST, 
+4. Create sample methods in api to demonstrate: CRUD operations, entity to DTO conversion, pagination, ETag for REST, spring HATEOAS
 5. Include a H2 in memory database for persistence and usage of `spring-boot-starter-data-jpa`  
 6. Documenting the REST Api using Swagger
 
