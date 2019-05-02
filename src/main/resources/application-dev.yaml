@@ -1,0 +1,27 @@
+#
+# Copyright (c) 2019.
+# @ Sorin Alex Mare
+#
+server:
+  servlet:
+    context-path: @servlet.context-path@
+debug: false
+spring:
+    h2:
+      console:
+        enabled: true
+        path: /h2c #http://localhost:8080/spring-boot-rest-example/h2c
+    datasource:
+      url: jdbc:h2:mem:devDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MV_STORE=FALSE;MVCC=FALSE
+      username: sa
+      password:
+      driverClassName: org.h2.Driver
+    jpa:
+      show-sql: true
+      properties:
+        hibernate:
+          hbm2ddl:
+            auto: create
+          dialect: org.hibernate.dialect.H2Dialect
+          format_sql: true
+          generate_statistics: true

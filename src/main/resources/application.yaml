@@ -1,0 +1,16 @@
+#
+# Copyright (c) 2019.
+# @ Sorin Alex Mare
+#
+spring:
+  resources:
+    chain:
+      cache: false
+  profiles:
+    active: @spring.profiles.active@
+  mvc:
+    locale: en
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+      indent_output: true

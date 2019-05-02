@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2019.
+  ~ @ Sorin Alex Mare
+  ~ Email: sorin.mare@gmail.com
+  -->
+
+<Configuration status="trace">
+    <Appenders>
+        <Console name="CONSOLE_APPENDER" target="SYSTEM_OUT">
+            <PatternLayout>
+                <pattern>
+                    [%-5level] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %C.%M(%L) - %msg%n
+                </pattern>>
+            </PatternLayout>
+        </Console>
+
+        <!-- fisiere arhivate pe zi si pe dim de 1GB si pastrate la 15 zile -->
+        <RollingFile name="FILE_APPENDER"
+                     fileName="logs/${app.logs.default-filename}.log"
+                     filePattern="logs/${app.logs.default-filename}.%d{yyyy-MM-dd}.%i.log.gz"
+                     ignoreExceptions="false">
+            <PatternLayout>
+                <pattern>
+                    [%-5level] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %C.%M(%L) - %msg%n
+                </pattern>>
+            </PatternLayout>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="1 GB"/>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="logs/" maxDepth="2">
+                    <IfFileName glob="logs/${app.logs.default-filename}.*.log.gz"/>
+                    <IfLastModified age="15d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.sorinmare.examples.springbootrestexample" level="ALL" additivity="false">
+            <AppenderRef ref="FILE_APPENDER"/>
+            <AppenderRef ref="CONSOLE_APPENDER"/>
+        </Logger>
+        <Logger name="org.springframework.web" level="ERROR" additivity="false">
+            <AppenderRef ref="CONSOLE_APPENDER"/>
+            <AppenderRef ref="FILE_APPENDER"/>
+        </Logger>
+        <Logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+            <AppenderRef ref="FILE_APPENDER"/>
+            <AppenderRef ref="CONSOLE_APPENDER"/>
+        </Logger>
+        <Logger name="org.hibernate.type.descriptor.sql" level="TRACE" additivity="false">
+            <AppenderRef ref="FILE_APPENDER"/>
+            <AppenderRef ref="CONSOLE_APPENDER"/>
+        </Logger>
+        <Root>
+            <AppenderRef ref="FILE_APPENDER"/>
+            <AppenderRef ref="CONSOLE_APPENDER"/>
+        </Root>
+    </Loggers>
+</Configuration>
