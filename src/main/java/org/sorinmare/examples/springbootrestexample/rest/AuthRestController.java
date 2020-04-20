@@ -30,8 +30,8 @@ import javax.servlet.http.HttpServletResponse;
 @Api (value = "Authentication",
       description = "This API expose all the routes needed in order to login to these rest services.",
       tags = {"Authentication"})
-public class AuthRestService {
-	private static Logger LOG = LoggerFactory.getLogger(AuthRestService.class);
+public class AuthRestController {
+	private static Logger LOG = LoggerFactory.getLogger(AuthRestController.class);
 
 	@Autowired
 	private JwtTokenService jwtTokenService;

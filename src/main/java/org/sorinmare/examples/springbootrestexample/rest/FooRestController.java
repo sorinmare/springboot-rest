@@ -57,10 +57,10 @@ import java.util.stream.Collectors;
 @Api (value = "Foo",
       description = "This API expose some dummy routes.",
       tags = {"Foo"})
-public class FooRestService {
+public class FooRestController {
 	public static final  String      SWAGGER_AUTHENTICATION_SCHEME = "Bearer";
 	private static final int         INIT_SIZE                     = 100;
-	private static       Logger      LOG                           = LoggerFactory.getLogger(FooRestService.class);
+	private static       Logger      LOG                           = LoggerFactory.getLogger(FooRestController.class);
 	@Autowired
 	private              FooService  service;
 	@Autowired
@@ -196,7 +196,7 @@ public class FooRestService {
 			notes = "Use this route to populate database with random foos",
 			response = SuccessRS.class,
 			authorizations = {
-					@Authorization (value = FooRestService.SWAGGER_AUTHENTICATION_SCHEME)
+					@Authorization (value = FooRestController.SWAGGER_AUTHENTICATION_SCHEME)
 			}
 	)
 	@PostMapping (value = "/init",
@@ -216,7 +216,7 @@ public class FooRestService {
 			notes = "Use this route to create a new foo",
 			response = FooDTO.class,
 			authorizations = {
-					@Authorization (value = FooRestService.SWAGGER_AUTHENTICATION_SCHEME)
+					@Authorization (value = FooRestController.SWAGGER_AUTHENTICATION_SCHEME)
 			}
 	)
 	@RequestMapping (method = RequestMethod.POST,
@@ -237,7 +237,7 @@ public class FooRestService {
 			notes = "Use this route to update an existing foo",
 			response = FooDTO.class,
 			authorizations = {
-					@Authorization (value = FooRestService.SWAGGER_AUTHENTICATION_SCHEME)
+					@Authorization (value = FooRestController.SWAGGER_AUTHENTICATION_SCHEME)
 			}
 	)
 	@PutMapping (value = "/{id}",
@@ -258,7 +258,7 @@ public class FooRestService {
 			notes = "Use this route to delete an existing foo",
 			response = SuccessRS.class,
 			authorizations = {
-					@Authorization (value = FooRestService.SWAGGER_AUTHENTICATION_SCHEME)
+					@Authorization (value = FooRestController.SWAGGER_AUTHENTICATION_SCHEME)
 			}
 	)
 	@DeleteMapping (value = "/{id}",
