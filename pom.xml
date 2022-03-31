@@ -20,7 +20,7 @@
 
     <properties>
         <filterName>config/${build.profile.id}/filter.properties</filterName>
-        <spring-boot.version>2.1.4.RELEASE</spring-boot.version>
+        <spring-boot.version>2.5.12</spring-boot.version>
         <modelmapper.version>2.3.3</modelmapper.version>
         <jackson.version>2.9.8</jackson.version>
     </properties>
